@@ -1,0 +1,30 @@
+{
+  "name": "design-patterns",
+  "version": "1.0.0",
+  "description": "For learning design patterns",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "tsc -p ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thiendo261/design-patterns.git"
+  },
+  "keywords": [
+    "typescript",
+    "design-patterns",
+    "node",
+    "javascript"
+  ],
+  "author": "Thiendo261",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thiendo261/design-patterns/issues"
+  },
+  "homepage": "https://github.com/thiendo261/design-patterns#readme",
+  "dependencies": {
+    "@types/node": "^18.8.3",
+    "typescript": "^4.8.4"
+  }
+}
