@@ -98,7 +98,7 @@ const keys: (keyof Pick<PostData, "title" | "description" | "image">)[] = [
   "description",
   "image",
 ];
-let count = 0;
+let observerCount = 0;
 
 const handleSubscription: Record<number, () => void> = {
   5: () => postData.detachObserver(emailObserver),
@@ -107,14 +107,14 @@ const handleSubscription: Record<number, () => void> = {
 };
 
 const interval = setInterval(() => {
-  if (count > 20) {
+  if (observerCount > 20) {
     clearInterval(interval);
     return;
   }
 
-  handleSubscription[count]?.();
+  handleSubscription[observerCount]?.();
 
   const random = Math.floor(Math.random() * 3);
-  postData[keys[random]] = count.toString();
-  count++;
+  postData[keys[random]] = observerCount.toString();
+  observerCount++;
 }, 1000);
