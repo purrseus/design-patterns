@@ -22,7 +22,7 @@ class Ticket {
   constructor(
     public price: number,
     private readonly promoteStrategy: PromoteStrategy,
-    public name: string
+    public name: string,
   ) {}
 
   getPromotedPrice() {
@@ -33,7 +33,7 @@ class Ticket {
     console.log(
       `Price of ${this.name} is ${
         this.price
-      }. Promoted price is ${this.getPromotedPrice()}`
+      }. Promoted price is ${this.getPromotedPrice()}`,
     );
   }
 }
@@ -41,13 +41,15 @@ class Ticket {
 new Ticket(
   1000,
   new NoDiscountPromoteStrategy(),
-  "No Discount Ticket"
+  'No Discount Ticket',
 ).showTicketDetails();
 
 new Ticket(
   2000,
   new QuarterPromoteStrategy(),
-  "Quarter Ticket"
+  'Quarter Ticket',
 ).showTicketDetails();
 
-new Ticket(3000, new HalfPromoteStrategy(), "Half Ticket").showTicketDetails();
+new Ticket(3000, new HalfPromoteStrategy(), 'Half Ticket').showTicketDetails();
+
+export {};

@@ -13,10 +13,10 @@ class Subject {
 
   attachObserver(observer: Observer) {
     const isObserverExisted = this.observers.some(
-      (observerItem) => observerItem.name === observer.name
+      (observerItem) => observerItem.name === observer.name,
     );
     if (isObserverExisted) {
-      console.log("This observer already exists!");
+      console.log('This observer already exists!');
       return;
     }
     this.observers.push(observer);
@@ -24,7 +24,7 @@ class Subject {
 
   detachObserver(observer: Observer) {
     this.observers = this.observers.filter(
-      (observerItem) => observerItem.name !== observer.name
+      (observerItem) => observerItem.name !== observer.name,
     );
   }
 
@@ -39,7 +39,7 @@ class PostData extends Subject {
   constructor(
     private _title: string,
     private _description: string,
-    private _image: string
+    private _image: string,
   ) {
     super();
   }
@@ -81,22 +81,22 @@ class PostData extends Subject {
 }
 
 const postData = new PostData(
-  "This is a title",
-  "This is a description",
-  "This is a image"
+  'This is a title',
+  'This is a description',
+  'This is a image',
 );
 
 const pushNotificationObserver = new Observer(
-  "PushNotificationObserver",
-  postData
+  'PushNotificationObserver',
+  postData,
 );
-const emailObserver = new Observer("EmailObserver", postData);
-const smsObserver = new Observer("SMSObserver", postData);
+const emailObserver = new Observer('EmailObserver', postData);
+const smsObserver = new Observer('SMSObserver', postData);
 
-const keys: (keyof Pick<PostData, "title" | "description" | "image">)[] = [
-  "title",
-  "description",
-  "image",
+const keys: (keyof Pick<PostData, 'title' | 'description' | 'image'>)[] = [
+  'title',
+  'description',
+  'image',
 ];
 let observerCount = 0;
 
@@ -118,3 +118,5 @@ const interval = setInterval(() => {
   postData[keys[random]] = observerCount.toString();
   observerCount++;
 }, 1000);
+
+export {};

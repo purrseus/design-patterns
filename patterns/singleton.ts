@@ -4,7 +4,7 @@ let singletonCount = 0;
 class Counter {
   constructor() {
     if (instance) {
-      throw new Error("You can only create one instance!");
+      throw new Error('You can only create one instance!');
     }
     instance = this;
   }
@@ -29,3 +29,5 @@ counter.decrement();
 console.log(counter.getCount());
 // const counter2 = new Counter();
 // console.log(counter2.getCount());
+
+export {};

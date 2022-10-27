@@ -7,19 +7,19 @@ abstract class Animal {
 }
 
 class Dog extends Animal {
-  sound = "woof";
+  sound = 'woof';
 }
 
 class Cat extends Animal {
-  sound = "meow";
+  sound = 'meow';
 }
 
 class Duck extends Animal {
-  sound = "quack";
+  sound = 'quack';
 }
 
 class Chicken extends Animal {
-  sound = "cluck";
+  sound = 'cluck';
 }
 
 interface AnimalFactory {
@@ -50,6 +50,8 @@ class SequenceAnimalFactory implements AnimalFactory {
 }
 
 const animalFactory = new SequenceAnimalFactory();
+
 const animal = animalFactory.createAnimal();
 animal.makeSound();
-animal.showLegs();
+
+export {};

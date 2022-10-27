@@ -35,7 +35,7 @@ class PersonalComputer implements IPersonalComputer {
     public mouse: Mouse,
     public ram: Ram,
     public cpu: Cpu,
-    public graphicCard: GraphicCard
+    public graphicCard: GraphicCard,
   ) {}
 }
 
@@ -93,7 +93,7 @@ class PersonalComputerBuilder
       this.mouse!,
       this.ram!,
       this.cpu!,
-      this.graphicCard!
+      this.graphicCard!,
     );
   }
 }
@@ -109,3 +109,5 @@ const personalComputer = new PersonalComputerBuilder()
   .build();
 
 console.log(personalComputer);
+
+export {};

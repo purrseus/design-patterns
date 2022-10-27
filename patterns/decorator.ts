@@ -39,7 +39,10 @@ class InEarHeadphone extends PhoneDecorator {
 
 const smartPhone = new ChargeAdapter(
   new ChargeCable(
-    new SkinWrap(new ScreenProtector(new InEarHeadphone(new SmartPhone())))
-  )
+    new SkinWrap(new ScreenProtector(new InEarHeadphone(new SmartPhone()))),
+  ),
 );
+
 console.log(smartPhone.getCost());
+
+export {};

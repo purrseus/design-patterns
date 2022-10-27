@@ -1,36 +1,41 @@
 interface Shape {
-    draw(x1: number, y1: number, x2: number, y2: number): void;
+  draw(x1: number, y1: number, x2: number, y2: number): void;
 }
 
-class LegacyRetangle {
-    draw(x: number, y: number, w: number, h: number) {
-        console.log(`LegacyRetangle ${JSON.stringify({ x, y, w, h })}`);
-    }
+class LegacyRectangle {
+  draw(x: number, y: number, w: number, h: number) {
+    console.log(`LegacyRectangle ${JSON.stringify({ x, y, w, h })}`);
+  }
 }
 
-class Retangle implements Shape {
-    draw(x1: number, y1: number, x2: number, y2: number) {
-        console.log(`Retangle ${JSON.stringify({ x1, y1, x2, y2 })}`);
-    }
+class Rectangle implements Shape {
+  draw(x1: number, y1: number, x2: number, y2: number) {
+    console.log(`Rectangle ${JSON.stringify({ x1, y1, x2, y2 })}`);
+  }
 }
 
-class RetangleAdapter implements Shape {
-    constructor(private readonly retangle: LegacyRetangle) {}
+class RectangleAdapter implements Shape {
+  constructor(private readonly rectangle: LegacyRectangle) {}
 
-    draw(x1: number, y1: number, x2: number, y2: number) {
-        const x = Math.min(x1, x2);
-        const y = Math.min(y1, y2);
-        const w = Math.abs(x2 - x1);
-        const h = Math.abs(y2 - y1);
+  draw(x1: number, y1: number, x2: number, y2: number) {
+    const x = Math.min(x1, x2);
+    const y = Math.min(y1, y2);
+    const w = Math.abs(x2 - x1);
+    const h = Math.abs(y2 - y1);
 
-        this.retangle.draw(x, y, w, h);
-    }
+    this.rectangle.draw(x, y, w, h);
+  }
 }
 
 const coordinates: Parameters<Shape['draw']> = [-2, 1, 4, 3];
 
-const retangles = [new Retangle(), new RetangleAdapter(new LegacyRetangle())];
+const rectangles = [
+  new Rectangle(),
+  new RectangleAdapter(new LegacyRectangle()),
+];
 
-retangles.forEach(retangle => {
-    retangle.draw(...coordinates);
+rectangles.forEach((rectangle) => {
+  rectangle.draw(...coordinates);
 });
+
+export {};

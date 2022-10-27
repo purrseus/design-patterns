@@ -1,57 +1,60 @@
 interface Command {
-    execute(): void;
-    undo(): void;
+  execute(): void;
+  undo(): void;
 }
 
 interface Receiver {
-    turnOnAction(): void;
-    turnOffAction(): void;
+  turnOnAction(): void;
+  turnOffAction(): void;
 }
 
 class Remote {
-    constructor(private readonly turnOnCommand: Command, private readonly turnOffCommand: Command) { }
+  constructor(
+    private readonly turnOnCommand: Command,
+    private readonly turnOffCommand: Command,
+  ) {}
 
-    turnOnButtonClick() {
-        this.turnOnCommand.execute();
-    }
+  turnOnButtonClick() {
+    this.turnOnCommand.execute();
+  }
 
-    turnOffButtonClick() {
-        this.turnOffCommand.execute();
-    }
+  turnOffButtonClick() {
+    this.turnOffCommand.execute();
+  }
 }
 
 class AirCondition implements Receiver {
-    turnOnAction() {
-        console.log('Turn on!');
-    }
+  turnOnAction() {
+    console.log('Turn on!');
+  }
 
-    turnOffAction() {
-        console.log('tTurn off!');
-    }
+  turnOffAction() {
+    console.log('tTurn off!');
+  }
 }
 
 class TurnOnCommand implements Command {
-    constructor(private readonly receiver: Receiver) { }
+  constructor(private readonly receiver: Receiver) {}
 
-    execute() {
-        this.receiver.turnOnAction();
-    }
+  execute() {
+    this.receiver.turnOnAction();
+  }
 
-    undo() {
-        this.receiver.turnOffAction();
-    }
+  undo() {
+    this.receiver.turnOffAction();
+  }
 }
 
 class TurnOffCommand implements Command {
-    constructor(private readonly receiver: Receiver) { }
+  constructor(private readonly receiver: Receiver) {}
 
-    execute() {
-        this.receiver.turnOffAction();
-    }
+  execute() {
+    this.receiver.turnOffAction();
+  }
 
-    undo() {
-        this.receiver.turnOnAction();
-    }
+  undo() {
+    this.receiver.turnOnAction();
+  }
 }
 
 const airCondition = new AirCondition();
@@ -63,3 +66,5 @@ const remote = new Remote(turnOnCommand, turnOffCommand);
 
 remote.turnOnButtonClick();
 remote.turnOffButtonClick();
+
+export {};
